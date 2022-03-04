@@ -12,14 +12,18 @@ void yyerror(char *s);
 %start Compilo
 %%
 Compilo : tMAIN tPO tPF Bloc ;
-Bloc : Instruction | tACCO SuiteInstructions tACCF | tACCO tACCF | tPV ;
-SuiteInstructions : Instruction | Instruction SuiteInstructions ;
-Instruction : Declaration tPV | Calcul tPV | tPV ; /* à ordonner */
-Declaration : tINT SuiteDeclarations | tCONST tINT SuiteDeclarations ;
-SuiteDeclarations : Initialisation tVIR SuiteDeclarations | Initialisation ;
+Bloc : Instruction | tACCO SuiteDeclarations SuiteCalculs tACCF | tACCO SuiteDeclarations tACCF | tACCO SuiteCalculs tACCF | tACCO tACCF ;
+Instruction : LigneDeclaration | LigneCalcul | tPV ;
+
+SuiteDeclarations : LigneDeclaration | LigneDeclaration SuiteDeclarations ;
+LigneDeclaration : tINT Declaration tPV | tCONST tINT Declaration tPV ;
+Declaration : Initialisation tVIR Declaration | Initialisation ;
 Initialisation : tID | tID tEGAL tNB ;
 
 
+SuiteCalculs : LigneCalcul | LigneCalcul SuiteCalculs ;
+LigneCalcul : Calcul tPV;
+// TODO: prendre en compte parenthesess
 Calcul : Expr { printf("> %d\n", $1); }
 		| tID tEGAL Expr { var[(int)$1] = $3; } ;
 Expr :		  Expr tADD DivMul { $$ = $1 + $3; }
