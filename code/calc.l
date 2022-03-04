@@ -13,7 +13,7 @@
 "," { return tVIR; }
 "\n"	{}
 ";" { return tPV; }
-[0-9]+(\.[0-9]*)?	{
+[0-9]+(\.[0-9]*)?(e[0-9]*)?	{
 	  yylval.nb = atoi(yytext);
 	  return tNB;
 	}
