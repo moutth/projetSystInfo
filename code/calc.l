@@ -8,10 +8,10 @@
 
 %%
 
-" " { return tESP; }
-"\t" { return tTAB; }
+" " 	{}
+"\t"	{}
 "," { return tVIR; }
-"\n" { return tEOL; }
+"\n"	{}
 ";" { return tPV; }
 [0-9]+(.[0-9]*)?	{
 	  yylval.nb = atoi(yytext);

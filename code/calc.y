@@ -11,17 +11,16 @@ void yyerror(char *s);
 %type <nb> Expr DivMul Terme
 %start Compilo
 %%
-Compilo :  tMAIN tPO tPF Bloc ;
-Bloc : Instruction | tACCO SuiteInstructions tACCF ;
+Compilo : tMAIN tPO tPF Bloc | tPV ;
+Bloc : Instruction | tACCO SuiteInstructions tACCF | tPV ;
 SuiteInstructions : Instruction | Instruction SuiteInstructions ;
-Instruction : Declaration tPV | Calcul tPV ; /* à ordonner */
+Instruction : Declaration tPV | Calcul tPV | tPV ; /* à ordonner */
 Declaration : tINT SuiteDeclarations | tCONST tINT SuiteDeclarations ;
 SuiteDeclarations : Initialisation tVIR SuiteDeclarations | Initialisation ;
 Initialisation : tID | tID tEGAL tNB ;
 
 
-Calculatrice :	  Calcul Calculatrice | Calcul ;
-Calcul :	  Expr tEOL { printf("> %d\n", $1); }
+Calcul : Expr tEOL { printf("> %d\n", $1); }
 		| tID tEGAL Expr tEOL { var[(int)$1] = $3; } ;
 Expr :		  Expr tADD DivMul { $$ = $1 + $3; }
 		| Expr tSOU DivMul { $$ = $1 - $3; }
@@ -35,7 +34,7 @@ Terme :		  tPO Expr tPF { $$ = $2; }
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
 int main(void) {
-  printf("Calculatrice\n"); // yydebug=1;
+  yydebug=1;
   yyparse();
   return 0;
 }
