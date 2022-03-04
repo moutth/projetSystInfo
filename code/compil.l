@@ -30,7 +30,7 @@
 "const" { return tCONST; }
 "main" { return tMAIN; }
 "int" { return tINT; }
-"printf" { return tPRINTF; } /* PAS SUUUUR */
+"printf" { return tPRINTF; }
 
 
 [a-zA-Z][0-9a-zA-Z_]*	{

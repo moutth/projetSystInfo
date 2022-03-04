@@ -12,8 +12,8 @@ void yyerror(char *s);
 %start Compilo
 %%
 Compilo : tMAIN tPO tPF Bloc ;
-Bloc : Instruction | tACCO SuiteDeclarations SuiteCalculs tACCF | tACCO SuiteDeclarations tACCF | tACCO SuiteCalculs tACCF | tACCO tACCF ;
-Instruction : LigneDeclaration | LigneCalcul | tPV ;
+Bloc : Ligne | tACCO SuiteDeclarations SuiteInstructions tACCF | tACCO SuiteDeclarations tACCF | tACCO SuiteInstructions tACCF | tACCO tACCF ;
+Ligne : LigneDeclaration | LigneCalcul | tPV ;
 
 SuiteDeclarations : LigneDeclaration | LigneDeclaration SuiteDeclarations ;
 LigneDeclaration : tINT Declaration tPV | tCONST tINT Declaration tPV ;
@@ -21,7 +21,9 @@ Declaration : Initialisation tVIR Declaration | Initialisation ;
 Initialisation : tID | tID tEGAL tNB ;
 
 
-SuiteCalculs : LigneCalcul | LigneCalcul SuiteCalculs ;
+SuiteInstructions : Instruction | Instruction SuiteInstructions ;
+Instruction : LigneCalcul | LignePrintf ;
+LignePrintf : tPRINTF tPO tID tPF tPV ;
 LigneCalcul : Calcul tPV;
 // TODO: prendre en compte parenthesess
 Calcul : Expr { printf("> %d\n", $1); }
