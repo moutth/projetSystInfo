@@ -1025,7 +1025,7 @@ YY_RULE_SETUP
 case 19:
 YY_RULE_SETUP
 #line 33 "compil.l"
-{ return tPRINTF; } /* PAS SUUUUR */
+{ return tPRINTF; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
