@@ -4,24 +4,30 @@
 #define INT 1
 #define FLOAT 2
 
-typedef struct {
+typedef struct symbole symbole;
+
+struct symbole {
     int type;
     char* name;
     int id;
     int depth;
-    symbole* next = NULL;
-} symbole;
+    symbole* next;
+};
 
 typedef struct {
-    symbole* first = NULL;
-    symbole* last = NULL;
-    int size = 0;
+    symbole* first;
+    symbole* last;
+    symbole* firstOfDepth;
+    int size;
+    int lastDepth;
 } tabSymbole;
 
 tabSymbole table;
 
-void push(char * name, int depth, int type = INT);
+void push(char * name, int depth, int type);
 
 void pop();
 
 void printTable();
+
+symbole inTable(char * name);
