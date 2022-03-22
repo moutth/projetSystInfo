@@ -1,6 +1,7 @@
 %{
 #include <stdlib.h>
 #include <stdio.h>
+#include "ts.h"
 int var[26];
 void yyerror(char *s);
 %}
@@ -47,16 +48,16 @@ LigneCalcul : Calcul tPV;
 
 // TODO: prendre en compte parenthesess
 Calcul : Expr { printf("> %d\n", $1); }
-		| tID tEGAL Expr { var[(int)$1] = $3; } ;
-Expr :		  Expr tADD DivMul { $$ = $1 + $3; }
-		| Expr tSOU DivMul { $$ = $1 - $3; }
-		| DivMul { $$ = $1; } ;
-DivMul :	  DivMul tMUL Terme { $$ = $1 * $3; }
-		| DivMul tDIV Terme { $$ = $1 / $3; }
-		| Terme { $$ = $1; } ;
-Terme :		  tPO Expr tPF { $$ = $2; }
-		| tID { $$ = var[$1]; }
-		| tNB { $$ = $1; } ;
+	   | tID tEGAL Expr { var[(int)$1] = $3; } ;
+Expr : Expr tADD DivMul { $$ = $1 + $3; }
+	 | Expr tSOU DivMul { $$ = $1 - $3; }
+	 | DivMul { $$ = $1; } ;
+DivMul : DivMul tMUL Terme { $$ = $1 * $3; }
+	   | DivMul tDIV Terme { $$ = $1 / $3; }
+	   | Terme { $$ = $1; } ;
+Terme : tPO Expr tPF { $$ = $2; }
+	  | tID { $$ = var[$1]; }
+	  | tNB { $$ = $1; } ;
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
 int main(void) {
