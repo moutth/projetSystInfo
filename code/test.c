@@ -8,6 +8,7 @@ void main(){
     printTable();
     push("b",2,INT);
     push("c",2,INT);
+    push("x",4,INT);
     printTable();
     pop();
     printTable();
@@ -15,8 +16,8 @@ void main(){
     printTable();
     push("newVar",1,INT);
     push("encoreUne",1,INT);
-    printf("%d", inTable("newVar").id);
     printTable();
+    printf("\nid of newVar : %d\n", inTable("newVar").id);
     pop();
     printTable();
 }

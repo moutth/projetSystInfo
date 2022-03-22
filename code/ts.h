@@ -5,6 +5,7 @@
 #define FLOAT 2
 
 typedef struct symbole symbole;
+typedef struct tabSymbole tabSymbole;
 
 struct symbole {
     int type;
@@ -14,15 +15,13 @@ struct symbole {
     symbole* next;
 };
 
-typedef struct {
+struct tabSymbole {
     symbole* first;
     symbole* last;
     symbole* firstOfDepth;
     int size;
     int lastDepth;
-} tabSymbole;
-
-tabSymbole table;
+};
 
 void push(char * name, int depth, int type);
 

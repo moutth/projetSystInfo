@@ -1,5 +1,7 @@
 #include "ts.h"
 
+tabSymbole table = {.size = 0, .lastDepth = 0};
+
 void push(char * name, int depth, int type){
     if(depth <= 0 || depth < table.lastDepth || depth > table.lastDepth + 1){
         printf("\n!Incorrect depth!\n");
@@ -24,6 +26,7 @@ void push(char * name, int depth, int type){
         }
         // Si on vient de démarrer un nouvel étage de profondeur
         if (depth == table.lastDepth + 1) {
+            printf("\nNew depth created.");
             table.lastDepth = depth;
             table.firstOfDepth = table.last;
         }
@@ -43,6 +46,7 @@ void pop(){
         table.last = NULL;
         table.first = NULL;
         table.firstOfDepth = NULL;
+        table.lastDepth --;
     }
     if (current != NULL) {
         next = current->next;
@@ -100,7 +104,6 @@ void printTable(){
 }
 
 symbole inTable(char * name){
-    // ERR ICI
     symbole * current = table.firstOfDepth;
     symbole err;
     while(current->name != name && current->next != NULL){
