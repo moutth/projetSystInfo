@@ -12,19 +12,39 @@ void yyerror(char *s);
 %start Compilo
 %%
 Compilo : tMAIN tPO tPF Bloc ;
-Bloc : Ligne | tACCO SuiteDeclarations SuiteInstructions tACCF | tACCO SuiteDeclarations tACCF | tACCO SuiteInstructions tACCF | tACCO tACCF ;
-Ligne : LigneDeclaration | LigneCalcul | tPV ;
 
-SuiteDeclarations : LigneDeclaration | LigneDeclaration SuiteDeclarations ;
-LigneDeclaration : tINT Declaration tPV | tCONST tINT Declaration tPV ;
-Declaration : Initialisation tVIR Declaration | Initialisation ;
-Initialisation : tID | tID tEGAL tNB ;
+Bloc : Ligne 
+	 | tACCO SuiteDeclarations SuiteInstructions tACCF 
+	 | tACCO SuiteDeclarations tACCF 
+	 | tACCO SuiteInstructions tACCF 
+	 | tACCO tACCF ;
+	 
+Ligne : LigneDeclaration 
+	  | LigneCalcul 
+	  | tPV ;
+
+SuiteDeclarations : LigneDeclaration 
+				  | LigneDeclaration SuiteDeclarations ;
+
+LigneDeclaration : tINT Declaration tPV 
+  				 | tCONST tINT Declaration tPV ;
+
+Declaration : Initialisation tVIR Declaration 
+		    | Initialisation ;
+
+Initialisation : tID 
+			   | tID tEGAL tNB ;
 
 
-SuiteInstructions : Instruction | Instruction SuiteInstructions ;
-Instruction : LigneCalcul | LignePrintf ;
+SuiteInstructions : Instruction 
+				  | Instruction SuiteInstructions ;
+
+Instruction : LigneCalcul 
+			| LignePrintf ;
+
 LignePrintf : tPRINTF tPO tID tPF tPV ;
 LigneCalcul : Calcul tPV;
+
 // TODO: prendre en compte parenthesess
 Calcul : Expr { printf("> %d\n", $1); }
 		| tID tEGAL Expr { var[(int)$1] = $3; } ;
