@@ -2,7 +2,14 @@
 
 tabSymbole table = {.size = 0, .lastDepth = 0};
 
-void push(char * name, int depth, int type){
+int depth = 0;
+
+void newDepth(){
+    depth++;
+}
+
+void tspush(char * name, int type){
+    // depth must be current table depth or current table depth + 1
     if(depth <= 0 || depth < table.lastDepth || depth > table.lastDepth + 1){
         printf("\n!Incorrect depth!\n");
     } else {
@@ -34,7 +41,7 @@ void push(char * name, int depth, int type){
     printf("\nInsertion : %s, depth %d\n", name, depth);
 }
 
-void pop(){
+void tspop(){
     int depthToRemove = table.lastDepth;
     symbole * current = table.first;
     symbole * next;
@@ -79,7 +86,7 @@ void pop(){
     printf("\nDepth %d erased\n", depthToRemove);
 }
 
-void printTable(){
+void printts(){
     symbole * current = table.first;
     char * typeStr;
     printf("\nTable des symboles :\n");
@@ -103,7 +110,7 @@ void printTable(){
     }
 }
 
-symbole inTable(char * name){
+symbole fromts(char * name){
     symbole * current = table.firstOfDepth;
     symbole err;
     while(current->name != name && current->next != NULL){

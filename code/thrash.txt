@@ -1,0 +1,10 @@
+main(){
+    if (a<=1) {
+        c = c + 2;
+    } else {
+        c = c - 1;
+        if((a+1) > bb)
+        printf(bb);
+    }
+    printf(c);
+}

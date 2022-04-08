@@ -9,3 +9,5 @@
 #define AFC 6
 #define JMP 7
 #define JMF 8
+
+void insert(int numIns); //numIns entre 1 et 8 (cf DEFINE)

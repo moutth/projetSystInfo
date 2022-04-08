@@ -49,60 +49,68 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    tEGAL = 258,
+    tAFFECT = 258,
     tPO = 259,
     tPF = 260,
     tSOU = 261,
     tADD = 262,
     tDIV = 263,
     tMUL = 264,
-    tERROR = 265,
-    tMAIN = 266,
-    tACCO = 267,
-    tACCF = 268,
-    tESP = 269,
-    tTAB = 270,
-    tVIR = 271,
-    tEOL = 272,
-    tPV = 273,
-    tCONST = 274,
-    tINT = 275,
-    tPRINTF = 276,
-    tNB = 277,
-    tID = 278
+    tMAIN = 265,
+    tACCO = 266,
+    tACCF = 267,
+    tVIR = 268,
+    tPV = 269,
+    tCONST = 270,
+    tINT = 271,
+    tPRINTF = 272,
+    tEGAL = 273,
+    tINFEG = 274,
+    tSUPEG = 275,
+    tINF = 276,
+    tSUP = 277,
+    tIF = 278,
+    tELSE = 279,
+    tERROR = 280,
+    tNB = 281,
+    tID = 282
   };
 #endif
 /* Tokens.  */
-#define tEGAL 258
+#define tAFFECT 258
 #define tPO 259
 #define tPF 260
 #define tSOU 261
 #define tADD 262
 #define tDIV 263
 #define tMUL 264
-#define tERROR 265
-#define tMAIN 266
-#define tACCO 267
-#define tACCF 268
-#define tESP 269
-#define tTAB 270
-#define tVIR 271
-#define tEOL 272
-#define tPV 273
-#define tCONST 274
-#define tINT 275
-#define tPRINTF 276
-#define tNB 277
-#define tID 278
+#define tMAIN 265
+#define tACCO 266
+#define tACCF 267
+#define tVIR 268
+#define tPV 269
+#define tCONST 270
+#define tINT 271
+#define tPRINTF 272
+#define tEGAL 273
+#define tINFEG 274
+#define tSUPEG 275
+#define tINF 276
+#define tSUP 277
+#define tIF 278
+#define tELSE 279
+#define tERROR 280
+#define tNB 281
+#define tID 282
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 7 "compil.y"
+#line 8 "compil.y"
  int nb; char var; 
 
-#line 106 "y.tab.h"
+#line 114 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
