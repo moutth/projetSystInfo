@@ -6,7 +6,7 @@ int var[26];
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token tEGAL tPO tPF tSOU tADD tDIV tMUL tERROR tMAIN tACCO tACCF tESP tTAB tVIR tEOL tPV tCONST tINT tPRINTF
+%token tAFFECT tPO tPF tSOU tADD tDIV tMUL tMAIN tACCO tACCF tVIR tPV tCONST tINT tPRINTF tEGAL tINFEG tSUPEG tINF tSUP
 %token <nb> tNB
 %token <var> tID
 %type <nb> Expr DivMul Terme
@@ -19,7 +19,22 @@ Bloc : Ligne
 	 | tACCO SuiteDeclarations tACCF 
 	 | tACCO SuiteInstructions tACCF 
 	 | tACCO tACCF ;
+	 | If ;
+
+If : Condition Bloc Else
+   | Condition Bloc ;
+
+Else : Bloc ;
+
+Condition : tPO Comparaison tPF ;
 	 
+Comparaison : Terme tEGAL Terme
+			| Terme tINF Terme
+			| Terme tSUP Terme
+			| Terme tINFEG Terme
+			| Terme tSUPEG Terme
+			| Terme ;
+
 Ligne : LigneDeclaration 
 	  | LigneCalcul 
 	  | tPV ;
@@ -34,7 +49,7 @@ Declaration : Initialisation tVIR Declaration
 		    | Initialisation ;
 
 Initialisation : tID 
-			   | tID tEGAL tNB ;
+			   | tID tAFFECT tNB ;
 
 
 SuiteInstructions : Instruction 
@@ -48,7 +63,7 @@ LigneCalcul : Calcul tPV;
 
 // TODO: prendre en compte parenthesess
 Calcul : Expr { printf("> %d\n", $1); }
-	   | tID tEGAL Expr { var[(int)$1] = $3; } ;
+	   | tID tAFFECT Expr { var[(int)$1] = $3; } ;
 Expr : Expr tADD DivMul { $$ = $1 + $3; }
 	 | Expr tSOU DivMul { $$ = $1 - $3; }
 	 | DivMul { $$ = $1; } ;
