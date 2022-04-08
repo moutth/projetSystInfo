@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1649400553">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="BG-DRC" Name="Compteur.drc"/>
+  <File Type="BG-BGN" Name="Compteur.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="Compteur.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Compteur.ltx"/>
+  <File Type="BITSTR-MMI" Name="Compteur.mmi"/>
+  <File Type="BITSTR-BMM" Name="Compteur_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="Compteur.nky"/>
+  <File Type="BITSTR-RBT" Name="Compteur.rbt"/>
+  <File Type="BITSTR-MSK" Name="Compteur.msk"/>
+  <File Type="BG-BIN" Name="Compteur.bin"/>
+  <File Type="BG-BIT" Name="Compteur.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Compteur_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Compteur_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Compteur_bus_skew_postroute_physopted.rpt"/>
+  <File Type="RDI-RDI" Name="Compteur.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Compteur_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Compteur_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Compteur_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Compteur_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Compteur_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Compteur_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Compteur_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="Compteur_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Compteur_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="Compteur_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Compteur_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Compteur_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="Compteur_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="Compteur_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="Compteur_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="Compteur_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Compteur_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Compteur_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Compteur_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="Compteur_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="Compteur_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="Compteur_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Compteur_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="Compteur_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Compteur_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="Compteur_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="Compteur_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Compteur_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Compteur_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Compteur_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="Compteur_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Compteur_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Compteur_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="Compteur_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Compteur_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="Compteur_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Compteur_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="Compteur_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="Compteur_placed.dcp"/>
+  <File Type="PWROPT-TIMING" Name="Compteur_timing_summary_pwropted.rpt"/>
+  <File Type="PWROPT-DRC" Name="Compteur_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="Compteur_pwropt.dcp"/>
+  <File Type="OPT-TIMING" Name="Compteur_timing_summary_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Compteur.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Compteur_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="Compteur_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="Compteur_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="Compteur_timing_summary_init.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Compteur_bus_skew_routed.rpx"/>
+  <File Type="REPORTS-TCL" Name="Compteur_reports.tcl"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Compteur_bus_skew_routed.pb"/>
+  <File Type="PA-TCL" Name="Compteur.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/Compteur.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Compteur"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/compteur_8bits.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/compteur_8bits.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

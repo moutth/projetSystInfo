@@ -1,0 +1,55 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Fri Apr  8 08:36:54 2022
+# Process ID: 44203
+# Current directory: /home/riffard/4A/archi_mat/compteur
+# Command line: vivado
+# Log file: /home/riffard/4A/archi_mat/compteur/vivado.log
+# Journal file: /home/riffard/4A/archi_mat/compteur/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/riffard/4A/archi_mat/compteur/compteur.xpr
+update_compile_order -fileset sources_1
+open_run impl_1
+reset_run impl_1
+launch_runs impl_1 -jobs 3
+wait_on_run impl_1
+launch_simulation
+source Compteur.tcl
+close_design
+launch_simulation -mode post-implementation -type timing
+source Compteur.tcl
+open_run synth_1 -name synth_1
+reset_run synth_1
+launch_runs impl_1 -jobs 3
+wait_on_run impl_1
+current_sim simulation_1
+close_sim
+launch_simulation
+source Compteur.tcl
+reset_run impl_1
+launch_runs impl_1 -jobs 3 -scripts_only
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 3 -scripts_only
+wait_on_run synth_1
+launch_runs impl_1 -jobs 3
+wait_on_run impl_1
+close_sim
+launch_simulation
+source Compteur.tcl
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+current_sim simulation_2
+close_sim
+current_design impl_1
+close_design
+launch_simulation -mode post-implementation -type timing
+source Compteur.tcl
+add_files -fileset constrs_1 -norecurse /home/riffard/4A/archi_mat/compteur/contraintes
+set_property source_mgmt_mode DisplayOnly [current_project]
+reorder_files -fileset constrs_1 -after /home/riffard/4A/archi_mat/compteur/compteur.srcs/constrs_1/new/compteur_8bits.xdc /home/riffard/4A/archi_mat/compteur/contraintes
+current_design synth_1
+refresh_design
+current_design impl_1
