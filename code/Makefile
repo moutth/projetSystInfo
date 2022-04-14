@@ -5,12 +5,9 @@ BIN=compil
 CC=gcc
 CFLAGS=-Wall -g
 
-OBJ=y.tab.o lex.yy.o
+OBJ=y.tab.o lex.yy.o ts.o ta.o
 
 all: $(BIN)
-
-%.o: %.c
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 y.tab.c: $(GRM)
 	yacc -d $<
@@ -20,6 +17,11 @@ lex.yy.c: $(LEX)
 
 $(BIN): $(OBJ)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@
+
+test: test.o ts.o
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 clean:
 	rm $(OBJ) y.tab.c y.tab.h lex.yy.c

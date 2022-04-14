@@ -25,15 +25,15 @@ struct tabSymbole {
 };
 
 // Insert a var with the given name and type
-void tspush(char * name, int type);
+void pushts(char * name, int type);
 
 // Free all the var from the deeper depth then update the current depth
-void tspop();
+void popts();
 
 void printts();
 
 // Retreive a symbole given its name
 // Return an empty symbole if the symbole could'nt be found
-symbole fromts(char * name);
+symbole* fromts(char * name);
 
-void newDepth();
+void newDepthts();

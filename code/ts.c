@@ -4,13 +4,14 @@ tabSymbole table = {.size = 0, .lastDepth = 0};
 
 int depth = 0;
 
-void newDepth(){
+void newDepthts(){
     depth++;
+    printf("\nNew depth created.");
 }
 
-void tspush(char * name, int type){
+void pushts(char * name, int type){
     // depth must be current table depth or current table depth + 1
-    if(depth <= 0 || depth < table.lastDepth || depth > table.lastDepth + 1){
+    if(depth < 0 || depth < table.lastDepth || depth > table.lastDepth + 1){
         printf("\n!Incorrect depth!\n");
     } else {
         // Table vide
@@ -33,7 +34,6 @@ void tspush(char * name, int type){
         }
         // Si on vient de démarrer un nouvel étage de profondeur
         if (depth == table.lastDepth + 1) {
-            printf("\nNew depth created.");
             table.lastDepth = depth;
             table.firstOfDepth = table.last;
         }
@@ -41,15 +41,13 @@ void tspush(char * name, int type){
     printf("\nInsertion : %s, depth %d\n", name, depth);
 }
 
-void tspop(){
+void popts(){
     int depthToRemove = table.lastDepth;
     symbole * current = table.first;
     symbole * next;
     int foundNewLast = 0;
-    int foundNewFirst = 0;
     if (depthToRemove == 1){
         foundNewLast = 1;
-        foundNewFirst = 1;
         table.last = NULL;
         table.first = NULL;
         table.firstOfDepth = NULL;
@@ -58,9 +56,8 @@ void tspop(){
     if (current != NULL) {
         next = current->next;
         while(next != NULL){
-            // Look for the first element of depth max-1 to set the first elt of the last depth of the new list
+            // Look for the first element of depth max-1 to set the first elt of the new last depth
             if (current->depth == table.lastDepth - 1){
-                foundNewFirst = 1;
                 table.firstOfDepth = current;
                 table.lastDepth --;
             }
@@ -83,6 +80,7 @@ void tspop(){
         free(current);
         table.size --;
     }
+    depth--;
     printf("\nDepth %d erased\n", depthToRemove);
 }
 
@@ -102,7 +100,7 @@ void printts(){
                 default:
                 typeStr = "unknown";
             }
-            printf("type : %s, name : %s, id : %d, depth : %d\n", typeStr, current->name, current->id, current->depth);
+            printf("type : %s, name : %s, id : %d, depth : %d, value : %d\n", typeStr, current->name, current->id, current->depth, current->value);
             current = current->next;
         }
     } else {
@@ -110,16 +108,11 @@ void printts(){
     }
 }
 
-symbole fromts(char * name){
+symbole* fromts(char * name){
     symbole * current = table.firstOfDepth;
-    symbole err;
     while(current->name != name && current->next != NULL){
         current = current->next;
     }
-    // Si on a trouvé un match
-    if (current != NULL) {
-        return *current;
-    } else {
-        return err;
-    }
+    // Si on a pas trouvé de match le return vaut NULL
+    return current;
 }

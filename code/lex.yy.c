@@ -1071,7 +1071,7 @@ case 27:
 YY_RULE_SETUP
 #line 43 "compil.l"
 {
-	  yylval.var = yytext[0];
+	  yylval.var=strdup(yytext);
 	  return tID;
 	}
 	YY_BREAK

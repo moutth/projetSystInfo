@@ -3,21 +3,24 @@
 #include <stdlib.h>
 
 void main(){
-    prints();
-    pushts("a",1,INT);
-    prints();
-    pushts("b",2,INT);
-    pushts("c",2,INT);
-    pushts("x",4,INT);
-    prints();
+    printts();
+    newDepthts();
+    pushts("a",INT);
+    printts();
+    newDepthts();
+    pushts("b",INT);
+    pushts("c",INT);
+    pushts("x",INT);
+    printts();
     popts();
-    prints();
+    printts();
     popts();
-    prints();
-    pushts("newVar",1,INT);
-    pushts("encoreUne",1,INT);
-    prints();
-    printf("\nid of newVar : %d\n", fromts("newVar").id);
+    printts();
+    newDepthts();
+    pushts("newVar",INT);
+    pushts("encoreUne",INT);
+    printts();
+    printf("\nid of newVar : %d\n", fromts("newVar")->id);
     popts();
-    prints();
+    printts();
 }

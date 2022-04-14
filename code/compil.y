@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "ts.h"
-int var[26];
 void yyerror(char *s);
 %}
-%union { int nb; char var; }
+%union { int nb; char* var; }
 %token tAFFECT tPO tPF tSOU tADD tDIV tMUL tMAIN tACCO tACCF tVIR tPV tCONST tINT tPRINTF tEGAL tINFEG tSUPEG tINF tSUP tIF tELSE tERROR
 %token <nb> tNB
 %token <var> tID
@@ -14,11 +13,12 @@ void yyerror(char *s);
 %%
 Compilo : tMAIN tPO tPF Bloc ;
 
-Bloc : Ligne 
-	 | tACCO SuiteDeclarations SuiteInstructions tACCF 
-	 | tACCO SuiteDeclarations tACCF 
-	 | tACCO SuiteInstructions tACCF 
-	 | tACCO tACCF ;
+Bloc : { newDepthts(); } Ligne { popts(); }
+	 | { newDepthts(); } tACCO CorpsBloc tACCF { popts(); } ; 
+
+CorpsBloc : SuiteDeclarations SuiteInstructions 
+		  | SuiteDeclarations 
+		  | SuiteInstructions ;
 
 If : Condition Bloc tELSE Bloc
    | Condition Bloc ;
@@ -32,24 +32,23 @@ Comparaison : Terme tEGAL Terme
 			| Terme tSUPEG Terme
 			| Terme ;
 
-Ligne : LigneDeclaration 
+Ligne : Declaration 
 	  | Instruction
 	  | tPV ;
 
-SuiteDeclarations : LigneDeclaration 
-				  | LigneDeclaration SuiteDeclarations ;
+SuiteDeclarations : Declaration
+				  | Declaration SuiteDeclarations ;
 
-LigneDeclaration : tINT Declaration tPV 
-  				 | tCONST tINT Declaration tPV ;
-
-Declaration : Initialisation tVIR Declaration 
-		    | Initialisation ;
+Declaration : Initialisation tVIR Declaration
+		    | Initialisation tPV ;
 
 Initialisation : Type tID { pushts($2, $1); }
 			   | Type tID tAFFECT tNB { pushts($2, $1);
-			   							fromts($2).value = $4 } ;
+			   							fromts($2)->value = $4;
+										   printts();} ;
 
-Type : tINT; { $$ = INT; }
+Type : tINT { $$ = INT; } 
+	 | tCONST tINT { $$ = INT; }; //TODO: Change to const
 //TODO: float ici
 
 SuiteInstructions : Instruction 
@@ -64,7 +63,7 @@ LigneCalcul : Calcul tPV;
 
 // TODO: prendre en compte parenthesess
 Calcul : Expr { printf("> %d\n", $1); }
-	   | tID tAFFECT Expr { var[(int)$1] = $3; } ;
+	   | tID tAFFECT Expr { fromts($1)->value = $3; } ;
 
 Expr : Expr tADD DivMul { $$ = $1 + $3; }
 	 | Expr tSOU DivMul { $$ = $1 - $3; }
@@ -75,7 +74,7 @@ DivMul : DivMul tMUL Terme { $$ = $1 * $3; }
 	   | Terme { $$ = $1; } ;
 
 Terme : tPO Expr tPF { $$ = $2; }
-	  | tID { $$ = var[$1]; }
+	  | tID { $$ = fromts($1)->value; }
 	  | tNB { $$ = $1; } ;
 
 %%
