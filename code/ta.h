@@ -9,5 +9,9 @@
 #define AFC 6
 #define JMP 7
 #define JMF 8
+#define INF 9
+#define SUP 10
+#define EQU 11
+#define PRI 12
 
-void insert(int numIns); //numIns entre 1 et 8 (cf DEFINE)
+void insert(int numIns, int resultat, int op1, int op2); //numIns entre 1 et 12 (cf DEFINE)

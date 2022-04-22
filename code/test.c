@@ -20,7 +20,7 @@ void main(){
     pushts("newVar",INT);
     pushts("encoreUne",INT);
     printts();
-    printf("\nid of newVar : %d\n", fromts("newVar")->id);
+    printf("\naddress of newVar : %d\n", adrmem("newVar"));
     popts();
     printts();
 }

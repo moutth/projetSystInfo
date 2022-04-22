@@ -21,7 +21,7 @@ void pushts(char * name, int type){
             table.first->name = name;
             table.first->depth = depth;
             table.first->type = type;
-            table.first->id = table.size;
+            table.first->adr = table.size * 2;
             table.last = table.first;
         } else { //Table non vide
             table.size ++;
@@ -30,7 +30,7 @@ void pushts(char * name, int type){
             table.last->name = name;
             table.last->depth = depth;
             table.last->type = type;
-            table.last->id = table.size;
+            table.last->adr = table.size * 2;
         }
         // Si on vient de démarrer un nouvel étage de profondeur
         if (depth == table.lastDepth + 1) {
@@ -100,7 +100,7 @@ void printts(){
                 default:
                 typeStr = "unknown";
             }
-            printf("type : %s, name : %s, id : %d, depth : %d, value : %d\n", typeStr, current->name, current->id, current->depth, current->value);
+            printf("type : %s, name : %s, adr : %d, depth : %d, value : %d\n", typeStr, current->name, current->adr, current->depth, current->value);
             current = current->next;
         }
     } else {
@@ -115,4 +115,16 @@ symbole* fromts(char * name){
     }
     // Si on a pas trouvé de match le return vaut NULL
     return current;
+}
+
+int adr(char * name){
+    return fromts(name)->adr;
+}
+
+int adrtemp(char * name){
+    return fromts(name)->adr + OFFSET_MEM;
+}
+
+int adrtemp(){
+    return 0;
 }
