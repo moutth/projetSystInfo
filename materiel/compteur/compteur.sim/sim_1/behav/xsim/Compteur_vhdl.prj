@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../compteur.srcs/sources_1/new/Compteur.vhd" \
-
-# Do not sort compile order
-nosort
