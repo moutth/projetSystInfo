@@ -1,0 +1,5 @@
+main(){int a = 0; int b= 5; a = 125+b*(a+b+7)*8;}
+main(){int a = 0; int b=5; a = 125+b;}
+main(){int a = 0; int b=5; a = a+b;}
+main(){int a = 0; int b=5; a = a+b+7;}
+main(){int a = 0; if(a == 5){a=3;}}
