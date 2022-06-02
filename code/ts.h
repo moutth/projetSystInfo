@@ -6,7 +6,6 @@
 #include <string.h>
 
 #define INT 1
-#define FLOAT 2
 
 #define OFFSET_MEM 1 //size of one var in memory
 
