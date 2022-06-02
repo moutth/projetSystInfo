@@ -38,30 +38,44 @@ void insert(int numIns, int resultat, int op1, int op2){
 
 
 long savedLinePile[MAX_NESTED_CONDITIONS];
-int lastSavedLine = -1;
-int lastRetrieved = -1;
+int lineNbPile[MAX_NESTED_CONDITIONS];
+int lastLineSaved = -1;
+int nbPush = -1;
 
 void saveLine(int numIns, int adCompResult){
-    lastSavedLine ++;
-    if(lastSavedLine > MAX_NESTED_CONDITIONS-1){
+    if(lastLineSaved == MAX_NESTED_CONDITIONS-1){
         fprintf(stderr, "Too much nested conditions\n");
     } else {
+        lastLineSaved ++;
+        nbLines ++;
         if(numIns == JMF){
-            nbLines ++;
             fprintf(file, "%d %d ", JMF, adCompResult);
         } else if(numIns == JMP){
-            nbLines ++;
             fprintf(file, "%d ", JMP);
+        } else {
+            fprintf(stderr, "saveLine() only waits for JMP or JMF as an argument\n");
         }
-        savedLinePile[lastSavedLine] = ftell(file); 
+        savedLinePile[lastLineSaved] = ftell(file);
         fprintf(file, "    \n"); //save the place that will be overwritten when writting the destination of the JM
     }
 }
 
-void retrieveLine(){
-    lastRetrieved ++;
+
+void pushLineNb() {
+    if(nbPush == MAX_NESTED_CONDITIONS-1){
+        fprintf(stderr, "Too much nested conditions\n");
+    } else {
+        nbPush++;
+        lineNbPile[nbPush] = nbLines + 1;
+    }
+}
+
+void writeLine(){
     long posSave = ftell(file);
-    fseek(file, savedLinePile[lastRetrieved], SEEK_SET);
-    fprintf(file, "%d ", nbLines+1);
+    fseek(file, savedLinePile[lastLineSaved], SEEK_SET);
+    printf("\n%d %d\n", lastLineSaved, lineNbPile[nbPush]);
+    fprintf(file, "%d ", lineNbPile[nbPush]);
     fseek(file, posSave, SEEK_SET);
+    lastLineSaved --;
+    nbPush--;
 }

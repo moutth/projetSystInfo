@@ -38,6 +38,7 @@
 "printf" { return tPRINTF; }
 "if" {return tIF; }
 "else" {return tELSE; }
+"while" {return tWHILE; }
 
 
 [a-zA-Z][0-9a-zA-Z_]*	{

@@ -59,21 +59,22 @@ extern int yydebug;
     tMAIN = 265,
     tACCO = 266,
     tACCF = 267,
-    tVIR = 268,
-    tPV = 269,
-    tCONST = 270,
-    tINT = 271,
-    tPRINTF = 272,
-    tEGAL = 273,
-    tINFEG = 274,
-    tSUPEG = 275,
-    tINF = 276,
-    tSUP = 277,
-    tIF = 278,
-    tELSE = 279,
-    tERROR = 280,
-    tNB = 281,
-    tID = 282
+    tWHILE = 268,
+    tVIR = 269,
+    tPV = 270,
+    tCONST = 271,
+    tINT = 272,
+    tPRINTF = 273,
+    tEGAL = 274,
+    tINFEG = 275,
+    tSUPEG = 276,
+    tINF = 277,
+    tSUP = 278,
+    tIF = 279,
+    tELSE = 280,
+    tERROR = 281,
+    tNB = 282,
+    tID = 283
   };
 #endif
 /* Tokens.  */
@@ -87,21 +88,22 @@ extern int yydebug;
 #define tMAIN 265
 #define tACCO 266
 #define tACCF 267
-#define tVIR 268
-#define tPV 269
-#define tCONST 270
-#define tINT 271
-#define tPRINTF 272
-#define tEGAL 273
-#define tINFEG 274
-#define tSUPEG 275
-#define tINF 276
-#define tSUP 277
-#define tIF 278
-#define tELSE 279
-#define tERROR 280
-#define tNB 281
-#define tID 282
+#define tWHILE 268
+#define tVIR 269
+#define tPV 270
+#define tCONST 271
+#define tINT 272
+#define tPRINTF 273
+#define tEGAL 274
+#define tINFEG 275
+#define tSUPEG 276
+#define tINF 277
+#define tSUP 278
+#define tIF 279
+#define tELSE 280
+#define tERROR 281
+#define tNB 282
+#define tID 283
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -110,7 +112,7 @@ union YYSTYPE
 #line 9 "compil.y"
  int nb; char* var; 
 
-#line 114 "y.tab.h"
+#line 116 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

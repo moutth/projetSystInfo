@@ -40,16 +40,19 @@ Initialisation : Type tID { pushts($2, $1); }
 Type : tINT { $$ = INT; } ;
 
 SuiteInstructions : Instruction 
-				  | Instruction SuiteInstructions ;
+				  | Instruction { clearTemp(); } SuiteInstructions ;
 
-Instruction : Calcul tPV { clearTemp(); }
+Instruction : Calcul tPV
 			| Printf tPV
+			| tWHILE { pushLineNb(); } While
 			| tIF If ;
 
-If : Condition Bloc { retrieveLine(); }
-   | Condition Bloc Else { retrieveLine(); } ;
+While : Condition Bloc { saveLine(JMP, UNUSED); writeLine(); pushLineNb(); writeLine(); } ;
 
-Else : tELSE { saveLine(JMP, UNUSED); retrieveLine(); } Bloc ;
+If : Condition Bloc { pushLineNb(); writeLine(); }
+   | Condition Bloc Else { pushLineNb(); writeLine(); } ;
+
+Else : tELSE { pushLineNb(); saveLine(JMP, UNUSED); writeLine(); } Bloc ;
 
 Condition : tPO Comparaison tPF ;
 

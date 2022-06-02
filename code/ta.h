@@ -7,6 +7,11 @@
 
 #define MAX_NESTED_CONDITIONS 50
 
+#define LAST_LINE_NB 1
+#define PUSHED_LINE_NB 2
+
+//ASM macros
+#define UNUSED 0
 #define ADD 1
 #define MUL 2
 #define SOU 3
@@ -20,13 +25,14 @@
 #define EQU 11
 #define PRI 12
 
-#define UNUSED 0
-void insert(int numIns, int resultat, int op1, int op2); //numIns entre 1 et 12 (cf DEFINE)
+void insert(int numIns, int resultat, int op1, int op2); //numIns is one of the ASM macros  (cf DEFINE)
 
 void initFile(char * fileName);
 
 void saveLine();
 
-void retrieveLine();
+void pushLineNb();
+
+void writeLine();
 
 #endif
